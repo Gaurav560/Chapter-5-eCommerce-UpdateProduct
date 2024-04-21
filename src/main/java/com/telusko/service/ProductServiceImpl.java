@@ -53,7 +53,7 @@ public class ProductServiceImpl implements ProductService {
         if (imageFile != null && !imageFile.isEmpty()) {
             existingProduct.setImageName(imageFile.getOriginalFilename());
             existingProduct.setImageType(imageFile.getContentType());
-            existingProduct.setImageData(imageFile.getBytes());
+            existingProduct.setImageData(ImageUtils.compressImage(imageFile.getBytes()));
         }
 
         return productRepo.save(existingProduct);
